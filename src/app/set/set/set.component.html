@@ -1,0 +1,23 @@
+<div class="container">
+  <ng-container *ngFor="let set of sets; let i = index">
+    <mat-form-field>
+      <mat-chip-list #chipList>
+        <mat-chip *ngFor="let item of set.data" [selectable]="selectable"
+                  [removable]="removable" (removed)="remove(item, i)">
+          {{item}}
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+        <input placeholder="{{set.id}} ({{set.comment}})"
+               [matChipInputFor]="chipList"
+               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+               [matChipInputAddOnBlur]="addOnBlur"
+               (matChipInputTokenEnd)="add($event, i)">
+      </mat-chip-list>
+      <button mat-button matSuffix mat-icon-button title="Удалить" (click)="deleteSet(i)">
+        <mat-icon>delete_forever</mat-icon>
+      </button>
+    </mat-form-field>
+  </ng-container>
+</div>
+
+<button mat-raised-button color="primary" (click)="addNew()">Новый</button>

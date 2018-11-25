@@ -1,0 +1,17 @@
+:host {
+  ::ng-deep {
+    .mat-form-field .mat-form-field-wrapper {
+    }
+  }
+}
+
+tr td {
+  padding: 0 6px;
+  border-bottom: 1px solid #eeeeee;
+}
+
+table, th, td {
+  border-collapse: collapse;
+}
+
+

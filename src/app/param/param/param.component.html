@@ -1,0 +1,25 @@
+<div class="container">
+  <ng-container *ngFor="let param of params; let i = index">
+    <table>
+      <thead>
+      <tr>
+        <td>{{param.data.gset}}</td>
+        <td>value</td>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr *ngFor="let set of param._set; let j = index">
+        <td>
+          {{set}}
+        </td>
+        <td>
+          <mat-form-field>
+            <input matInput placeholder="{{set}}" class="input" [(ngModel)]="param.data.values[j]" (change)="save(param)">
+          </mat-form-field>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </ng-container>
+</div>

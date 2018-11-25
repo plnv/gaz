@@ -1,0 +1,10 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="form">
+  <mat-form-field>
+    <input matInput required placeholder="Имя" [formControl]="form.get('id')">
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput placeholder="Комментарий" [formControl]="form.get('comment')"></textarea>
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit">Добавить</button>
+</form>
