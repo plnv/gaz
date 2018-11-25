@@ -1,0 +1,40 @@
+{
+  "gset": [
+    {
+      "id": "asd",
+      "comment": null,
+      "data": [
+        "123",
+        "456",
+        "asd"
+      ]
+    },
+    {
+      "id": "fff",
+      "comment": null,
+      "data": []
+    }
+  ],
+  "param": [
+    {
+      "id": "param1",
+      "data": {
+        "gset": "asd",
+        "values": [
+          "456",
+          "456",
+          "aaa",
+          "asdasd",
+          "qwe",
+          "qwe"
+        ]
+      },
+      "_set": [
+        "123",
+        "456",
+        "asd",
+        "asdasd"
+      ]
+    }
+  ]
+}
