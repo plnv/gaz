@@ -73,7 +73,7 @@ export class SetComponent implements OnInit {
     const set: Set = this.sets[index];
     this.service.delete(set.id).subscribe(
       data => this.sets.splice(index, 1)
-    )
+    );
   }
 
 }
