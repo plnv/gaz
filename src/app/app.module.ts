@@ -6,7 +6,7 @@ import {
   MatDialogModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule, MatTabsModule
+  MatInputModule, MatSelectModule, MatTabsModule
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -42,7 +42,8 @@ const MATERIAL = [
   MatFormFieldModule,
   MatInputModule,
   MatDialogModule,
-  MatTabsModule
+  MatTabsModule,
+  MatSelectModule
 ];
 
 
@@ -65,7 +66,7 @@ const MATERIAL = [
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [SetAddComponent]
+  entryComponents: [SetAddComponent, ParamAddComponent]
 })
 export class AppModule {
 }

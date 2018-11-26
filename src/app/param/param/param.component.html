@@ -1,21 +1,21 @@
 <div class="container">
   <ng-container *ngFor="let param of params; let i = index">
+    <div class="name">{{param.id}} - {{param.data.gset}}
+      <button class="remove" mat-button matSuffix mat-icon-button title="Удалить" (click)="deleteParam(i)">
+        <mat-icon>delete_forever</mat-icon>
+      </button>
+    </div>
     <table>
-      <thead>
-      <tr>
-        <td>{{param.data.gset}}</td>
-        <td>value</td>
-      </tr>
-      </thead>
-
       <tbody>
       <tr *ngFor="let set of param._set; let j = index">
         <td>
-          {{set}}
+          <mat-chip-list>
+            <mat-chip>{{set}}</mat-chip>
+          </mat-chip-list>
         </td>
         <td>
           <mat-form-field>
-            <input matInput placeholder="{{set}}" class="input" [(ngModel)]="param.data.values[j]" (change)="save(param)">
+            <input matInput class="input" [(ngModel)]="param.data.values[j]" (change)="save(param)">
           </mat-form-field>
         </td>
       </tr>
@@ -23,3 +23,5 @@
     </table>
   </ng-container>
 </div>
+
+<button mat-raised-button color="primary" (click)="addNew()">Новый</button>

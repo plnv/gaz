@@ -4,6 +4,7 @@ import { combineLatest } from 'rxjs';
 import { Set } from '../../set/set';
 import { SetService } from '../../set/set.service';
 import { Param } from '../param';
+import { ParamAddComponent } from '../param-add/param-add.component';
 import { ParamService } from '../param.service';
 
 @Component({
@@ -15,6 +16,7 @@ import { ParamService } from '../param.service';
 export class ParamComponent implements OnInit {
 
   params: Param[];
+  sets: Set[];
 
   constructor(private paramService: ParamService, private setService: SetService, private dialog: MatDialog) {
   }
@@ -26,20 +28,45 @@ export class ParamComponent implements OnInit {
     );
 
     all.subscribe(data => {
-      if (data) {
+      if (data && data[0] && data[1]) {
         const params = data[0];
-        const sets = data[1];
-
-        this.params = params.map((i: Param) => {
-          i._set = sets.filter((j: Set) => j.id === i.data.gset)[0].data;
-          return i;
-        });
+        this.sets = data[1];
+        this.params = [];
+        params.forEach(i => this.setParam(i));
       }
     });
   }
 
+  setParam(param: Param) {
+    param._set = this.sets.filter((j: Set) => j.id === param.data.gset)[0].data;
+    this.params.push(param);
+  }
+
   save(data: Param) {
-    this.paramService.patch(data).subscribe();
+    const param = { ...data };
+    if (param._set) {
+      delete param._set;
+    }
+    this.paramService.patch(param).subscribe();
+  }
+
+  deleteParam(index: number) {
+    const param: Param = this.params[index];
+    this.paramService.delete(param.id).subscribe(
+      data => this.params.splice(index, 1)
+    );
+  }
+
+  addNew() {
+    const dialogRef = this.dialog.open(ParamAddComponent, { data: { sets: this.sets } });
+    dialogRef.componentInstance.emmiter.subscribe(value => {
+      this.paramService.post(value).subscribe(
+        data => {
+          this.setParam(data);
+          dialogRef.close();
+        }
+      );
+    });
   }
 
 }

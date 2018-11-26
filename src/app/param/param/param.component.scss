@@ -7,11 +7,24 @@
 
 tr td {
   padding: 0 6px;
-  border-bottom: 1px solid #eeeeee;
+  border-top: 1px solid #eeeeee;
 }
 
 table, th, td {
   border-collapse: collapse;
 }
 
+table td:last-child {
+  width: 100%;
+}
 
+.name {
+  padding: 6px;
+}
+
+.remove {
+  display: inline-block;
+  .mat-icon {
+    font-size: 17px;
+  }
+}

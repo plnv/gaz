@@ -34,12 +34,10 @@ export class SetComponent implements OnInit {
     const value = event.value;
     const set: Set = this.sets[index];
 
-    // Add our fruit
     if ((value || '').trim()) {
       set.data.push(value.trim());
     }
 
-    // Reset the input value
     if (input) {
       input.value = '';
     }

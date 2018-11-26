@@ -1,3 +1,14 @@
-<p>
-  param-add works!
-</p>
+<form (ngSubmit)="onSubmit()" [formGroup]="form">
+  <mat-form-field>
+    <input matInput required placeholder="Имя" [formControl]="form.get('id')">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Set" [formControl]="form.get('data.gset')" required>
+      <mat-option *ngFor="let i of data?.sets" [value]="i.id">
+        {{i.id}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit">Добавить</button>
+</form>
